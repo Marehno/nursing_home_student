@@ -76,9 +76,8 @@ public class Patient extends Person {
         LocalDate birthday = DateConverter.convertStringToLocalDate(dateOfBirth);
         this.dateOfBirth = birthday;
     }
-
     /**
-     *
+     * skladas
      * @return careLevel
      */
     public String getCareLevel() {
