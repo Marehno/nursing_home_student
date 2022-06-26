@@ -2,9 +2,9 @@ package model;
 
 public class Caregiver extends Person {
     private long cid;
-    private long phonenumber;
+    private int phonenumber;
 
-    public Caregiver(String firstname, String surname, long phonenumber) {
+    public Caregiver(String firstname, String surname, int phonenumber) {
         super(firstname, surname);
         this.phonenumber = phonenumber;
     }
@@ -15,14 +15,13 @@ public class Caregiver extends Person {
         this.cid = cid;
     }
 
-    public long getPhonenumber() {
+    public int getPhonenumber() {
         return phonenumber;
+    }
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
     }
     public long getCid() {
         return cid;
-    }
-
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
     }
 }
