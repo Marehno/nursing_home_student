@@ -1,6 +1,5 @@
 package controller;
 
-import datastorage.PatientDAO;
 import datastorage.CaregiverDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,8 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import model.Caregiver;
 import datastorage.DAOFactory;
-import model.Patient;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -53,7 +50,7 @@ public class AllCaregiverController {
     public void initialize() {
         readAllAndShowInTableView();
 
-        this.colID.setCellValueFactory(new PropertyValueFactory<Caregiver, Integer>("pid"));
+        this.colID.setCellValueFactory(new PropertyValueFactory<Caregiver, Integer>("cid"));
 
         //CellValuefactory zum Anzeigen der Daten in der TableView
         this.colSurname.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("surname"));
@@ -105,8 +102,8 @@ public class AllCaregiverController {
     //}
 
     /**
-     * updates a patient by calling the update-Method in the {@link CaregiverDAO}
-     * @param t row to be updated by the user (includes the patient)
+     * updates a caregiver by calling the update-Method in the {@link CaregiverDAO}
+     * @param t row to be updated by the user (includes the caregiver)
      */
     private void doUpdate(TableColumn.CellEditEvent<Caregiver, String> t) {
         try {
@@ -117,7 +114,7 @@ public class AllCaregiverController {
     }
 
     /**
-     * calls readAll in {@link CaregiverDAO} and shows patients in the table
+     * calls readAll in {@link CaregiverDAO} and shows caregivers in the table
      */
     private void readAllAndShowInTableView() {
         this.tableviewContent.clear();
@@ -153,7 +150,7 @@ public class AllCaregiverController {
 
 
     /**
-     * handles a add-click-event. Creates a patient and calls the create method in the {@link CaregiverDAO}
+     * handles a add-click-event. Creates a caregiver and calls the create method in the {@link CaregiverDAO}
      */
     @FXML
     public void handleAdd() {
@@ -162,8 +159,8 @@ public class AllCaregiverController {
         int phonenumber = Integer.parseInt(this.txtPhonenumber.getText());
 
         try {
-            Caregiver p = new Caregiver(surname, firstname, phonenumber,  2);
-            dao.create(p);
+            Caregiver c = new Caregiver(surname, firstname, phonenumber);
+            dao.create(c);
         } catch (SQLException e) {
             e.printStackTrace();
         }

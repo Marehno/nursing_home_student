@@ -1,47 +1,28 @@
 package model;
 
-public class Caregiver {
-    private String firstName;
-    private String surname;
-    private int phonenumber;
-    private long pid;
+public class Caregiver extends Person {
+    private long cid;
+    private long phonenumber;
 
-    public Caregiver(String firstName, String surname, int phonenumber, long pid) {
-        this.firstName = firstName;
-        this.surname = surname;
+    public Caregiver(String firstname, String surname, long phonenumber) {
+        super(firstname, surname);
         this.phonenumber = phonenumber;
-        this.pid = pid;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Caregiver(String firstname, String surname, int phonenumber, long cid) {
+        super(firstname, surname);
+        this.phonenumber = phonenumber;
+        this.cid = cid;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getPhonenumber() {
+    public long getPhonenumber() {
         return phonenumber;
+    }
+    public long getCid() {
+        return cid;
     }
 
     public void setPhonenumber(int phonenumber) {
         this.phonenumber = phonenumber;
-    }
-
-    public long getPid() {
-        return pid;
-    }
-
-    public void setPid(long pid) {
-        this.pid = pid;
     }
 }

@@ -28,12 +28,6 @@ public class AllPatientController {
     private TableColumn<Patient, String> colFirstName;
     @FXML
     private TableColumn<Patient, String> colSurname;
-    @FXML
-    private TableColumn<Patient, String> colDateOfBirth;
-    @FXML
-    private TableColumn<Patient, String> colCareLevel;
-    @FXML
-    private TableColumn<Patient, String> colRoom;
 
     @FXML
     Button btnDelete;
@@ -68,15 +62,6 @@ public class AllPatientController {
 
         this.colSurname.setCellValueFactory(new PropertyValueFactory<Patient, String>("surname"));
         this.colSurname.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        this.colDateOfBirth.setCellValueFactory(new PropertyValueFactory<Patient, String>("dateOfBirth"));
-        this.colDateOfBirth.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        this.colCareLevel.setCellValueFactory(new PropertyValueFactory<Patient, String>("careLevel"));
-        this.colCareLevel.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        this.colRoom.setCellValueFactory(new PropertyValueFactory<Patient, String>("roomnumber"));
-        this.colRoom.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
