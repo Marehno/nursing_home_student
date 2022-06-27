@@ -22,12 +22,12 @@ public class TreatmentDAO extends DAOimp<Treatment> {
         return String.format("INSERT INTO treatment (pid, treatment_date, begin, end, description, remarks) VALUES " +
                 "(%d, '%s', '%s', '%s', '%s', '%s')", treatment.getPid(), treatment.getDate(),
                 treatment.getBegin(), treatment.getEnd(), treatment.getDescription(),
-                treatment.getRemarks());
+                treatment.getRemarks(), treatment.getLockStatus());
     }
 
     @Override
     protected String getReadByIDStatementString(long key) {
-        return String.format("SELECT * FROM treatment WHERE tid = %d", key);
+        return String.format("SELECT * FROM treatment WHERE tid = %d and lock_status = false", key);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class TreatmentDAO extends DAOimp<Treatment> {
 
     @Override
     protected String getReadAllStatementString() {
-        return "SELECT * FROM treatment";
+        return "SELECT * FROM treatment where lock_status = false";
     }
 
     @Override
@@ -82,12 +82,16 @@ public class TreatmentDAO extends DAOimp<Treatment> {
         return list;
     }
 
-    private String getReadAllTreatmentsOfOnePatientByPid(long pid){
+    private String getReadAllTreatmentsOfOnePatientByPid(long pid) {
         return String.format("SELECT * FROM treatment WHERE pid = %d", pid);
     }
 
     public void deleteByPid(long key) throws SQLException {
         Statement st = conn.createStatement();
         st.executeUpdate(String.format("Delete FROM treatment WHERE pid= %d", key));
+    }
+    public void updateLock(long key) throws SQLException{
+        Statement statement = conn.createStatement();
+        statement.executeUpdate(String.format("Update treatment set lock_status = true where tid = %d", key));
     }
 }

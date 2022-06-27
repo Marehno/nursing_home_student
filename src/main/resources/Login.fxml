@@ -28,20 +28,15 @@
                     </rowConstraints>
                     <children>
                         <TextField fx:id="txtUsername" onKeyReleased="#txtKey" promptText="Username" GridPane.rowIndex="1" />
-                        <PasswordField fx:id="txtPassword" layoutX="177.0" layoutY="30.0" onKeyReleased="#txtKey" promptText="Kennwort" GridPane.rowIndex="2" />
+                        <PasswordField fx:id="txtPassword" layoutX="177.0" layoutY="10.0" onKeyReleased="#txtKey" promptText="Kennwort" GridPane.rowIndex="4" />
                         <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: darkblue;" text="Anmelden" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                             <font>
                                 <Font size="12.0" />
                             </font>
                         </Button>
-                        <Label text="Anmelden" GridPane.halignment="LEFT">
+                        <Label text="Anmelden" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="Arial Black" size="22.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="wrongLogin" textFill="RED" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="10.0" />
                             </font>
                         </Label>
                     </children>

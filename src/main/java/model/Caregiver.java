@@ -21,5 +21,7 @@ public class Caregiver extends Person {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    public long getCid() { return cid; }
+    public long getCid() {
+       return cid;
+   }
 }

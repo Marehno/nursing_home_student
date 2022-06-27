@@ -125,8 +125,8 @@ public class AllCaregiverController {
         CaregiverDAO cDao = DAOFactory.getDAOFactory().createCaregiverDAO();
         Caregiver selectedItem = this.tableView.getSelectionModel().getSelectedItem();
         try {
-            cDao.deleteById(selectedItem.getCid());
-            dao.deleteById(selectedItem.getCid());
+            cDao.checkTheLockStatus(selectedItem.getCid());
+            dao.checkTheLockStatus(selectedItem.getCid());
             this.tableView.getItems().remove(selectedItem);
         } catch (SQLException e) {
             e.printStackTrace();

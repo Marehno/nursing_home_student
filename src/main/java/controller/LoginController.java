@@ -20,25 +20,21 @@ public class LoginController {
     public PasswordField txtPassword;
     public Button btnLogin;
 
-    //String username = this.txtUsername.getText();
-    //String password = this.txtPassword.getText();
-
     public void userLogin() throws SQLException, IOException {
         if (this.txtUsername.getText() != null && this.txtPassword.getText() != null) {
             isUserValid();
         }
     }
     public void isUserValid() throws SQLException, IOException {
-        EncryptAndDecrypt encryptAndDecrypt = new EncryptAndDecrypt();
         UserDAO dao = DAOFactory.getDAOFactory().createUserDAO();
         List<User> allUser = dao.readAll();
         Main main = new Main();
 
         //String pwhash = encryptAndDecrypt.hash(this.txtPassword.getText().toCharArray(), "bla".getBytes()).toString();
         for (User user : allUser) {
-            if(this.txtUsername.getText().equals(user.getUsername()) && encryptAndDecrypt.hash(this.txtPassword.getText().toCharArray(), "bla".getBytes()).equals(user.getPassword())) {
-                byte[] test = encryptAndDecrypt.hash(user.getPassword().toCharArray(), "bla".getBytes());
-                System.out.println(test);
+            if(this.txtUsername.getText().equals(user.getUsername()) && EncryptAndDecrypt.hash(this.txtPassword.getText().toCharArray(), "bla".getBytes()).equals(user.getPassword())) {
+                //byte[] test = encryptAndDecrypt.hash(user.getPassword().toCharArray(), "bla".getBytes());
+
                 main.changeScene("/MainWindowView.fxml");
             }
         }

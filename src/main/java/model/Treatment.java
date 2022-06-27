@@ -9,14 +9,14 @@ import java.time.LocalTime;
 public class Treatment {
     private long tid;
     private long pid;
+    private boolean checkTheLockStatus;
     private LocalDate date;
     private LocalTime begin;
     private LocalTime end;
     private String description;
     private String remarks;
 
-    public Treatment(long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String remarks) {
+    public Treatment(long pid, LocalDate date, LocalTime begin, LocalTime end, String description, String remarks) {
         this.pid = pid;
         this.date = date;
         this.begin = begin;
@@ -25,8 +25,7 @@ public class Treatment {
         this.remarks = remarks;
     }
 
-    public Treatment(long tid, long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String remarks) {
+    public Treatment(long tid, long pid, LocalDate date, LocalTime begin, LocalTime end, String description, String remarks) {
         this.tid = tid;
         this.pid = pid;
         this.date = date;
@@ -87,6 +86,13 @@ public class Treatment {
         this.remarks = remarks;
     }
 
+    public boolean getLockStatus() {
+        return checkTheLockStatus;
+    }
+
+    public void setCheckTheLockStatus(boolean checkTheLockStatus) {
+        this.checkTheLockStatus = checkTheLockStatus;
+    }
     public String toString() {
         return "\nBehandlung" + "\nTID: " + this.tid +
                 "\nPID: " + this.pid +
@@ -96,4 +102,5 @@ public class Treatment {
                 "\nDescription: " + this.description +
                 "\nRemarks: " + this.remarks + "\n";
     }
+
 }
