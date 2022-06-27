@@ -119,20 +119,20 @@ public class AllCaregiverController {
     /**
      * handles a delete-click-event. Calls the delete methods in the {@link CaregiverDAO}
      */
-    /*
+
     @FXML
     public void handleDeleteRow() {
-        TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
-        Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+        CaregiverDAO cDao = DAOFactory.getDAOFactory().createCaregiverDAO();
+        Caregiver selectedItem = this.tableView.getSelectionModel().getSelectedItem();
         try {
-            tDao.deleteByPid(selectedItem.getPid());
-            dao.deleteById(selectedItem.getPid());
+            cDao.deleteById(selectedItem.getCid());
+            dao.deleteById(selectedItem.getCid());
             this.tableView.getItems().remove(selectedItem);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    */
+
 
 
     /**
