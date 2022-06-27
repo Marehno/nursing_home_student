@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class ConnectionBuilder {
     private static Connection conn;
 
+
     private ConnectionBuilder() {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");

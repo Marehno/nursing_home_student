@@ -23,10 +23,8 @@ public class AllCaregiverController {
     private TableColumn<Caregiver, Integer> colID;
     @FXML
     private TableColumn<Caregiver, String> colSurname;
-
     @FXML
     private TableColumn<Caregiver,String> colFirstname;
-
     @FXML
     private TableColumn<Caregiver, String> colPhonenumber;
 

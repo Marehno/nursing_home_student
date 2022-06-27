@@ -18,8 +18,19 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The <code>AllTreatmentController</code> contains the entire logic of the treatment view. It determines which data is displayed and how to react to events.
+ */
 public class AllTreatmentController {
+    /**
+     * @param tableView
+     * @param colID
+     * @param colPid
+     * @param colDate
+     * @param colBegin
+     * @param colEnd
+     * @param colDescription
+     */
     @FXML
     private TableView<Treatment> tableView;
     @FXML
@@ -41,12 +52,18 @@ public class AllTreatmentController {
     @FXML
     private Button btnCheckTheLockStatus;
 
+
     private ObservableList<Treatment> tableviewContent = FXCollections.observableArrayList();
     private TreatmentDAO dao;
     private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
     private ArrayList<Patient> patientList;
     private Main main;
 
+
+    /**
+     * In this Method <code>initialize()</code> the variables are declared and initialized.
+     * And the values are displayed in the method <code>readAllAndShowInTableView()</code>
+     */
     public void initialize() {
         readAllAndShowInTableView();
         comboBox.setItems(myComboBoxData);
@@ -63,6 +80,10 @@ public class AllTreatmentController {
         createComboBoxData();
     }
 
+    /**
+     * In this method the text fields are cleared and then written to the table through the database connection and the For loop
+     */
+
     public void readAllAndShowInTableView() {
         this.tableviewContent.clear();
         comboBox.getSelectionModel().select(0);
@@ -78,6 +99,10 @@ public class AllTreatmentController {
         }
     }
 
+    /**
+     * The method creates a list of patients written in a ComboBox with which one then links the treatments to the patients.
+     * And shows the following treatments of the patients or all treatments
+     */
     private void createComboBoxData(){
         PatientDAO dao = DAOFactory.getDAOFactory().createPatientDAO();
         try {
@@ -86,7 +111,7 @@ public class AllTreatmentController {
             for (Patient patient: patientList) {
                 this.myComboBoxData.add(patient.getSurname());
             }
-        }catch(SQLException e){
+        } catch(SQLException e){
             e.printStackTrace();
         }
     }
@@ -121,6 +146,11 @@ public class AllTreatmentController {
         }
     }
 
+    /**
+     * The method uses a For loop to search for the surname
+     * @param surname
+     * @return value is null
+     */
     private Patient searchInList(String surname){
         for (int i =0; i<this.patientList.size();i++){
             if(this.patientList.get(i).getSurname().equals(surname)){
@@ -142,6 +172,9 @@ public class AllTreatmentController {
         }
     }
 
+    /**
+     * The method gets new treatments and checks if the treatments match with the patient
+     */
     @FXML
     public void handleNewTreatment() {
         try{
@@ -170,6 +203,11 @@ public class AllTreatmentController {
         });
     }
 
+    /**
+     * This method loads the FXML-File (NewTreatmentView.fxml) and shows it on the Screen via Scene and Stage
+     * The method gets passed a patient and checks if an IOException comes or not with the controller.initialize
+     * @param patient
+     */
     public void newTreatmentWindow(Patient patient){
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NewTreatmentView.fxml"));

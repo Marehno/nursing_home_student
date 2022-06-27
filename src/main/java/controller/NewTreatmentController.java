@@ -61,6 +61,10 @@ public class NewTreatmentController {
         stage.close();
     }
 
+    /**
+     *
+     * @param treatment
+     */
     private void createTreatment(Treatment treatment) {
         TreatmentDAO dao = DAOFactory.getDAOFactory().createTreatmentDAO();
         try {

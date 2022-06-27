@@ -12,6 +12,10 @@ public class MainWindowController {
     @FXML
     private BorderPane mainBorderPane;
 
+    /**
+     *
+     * @param e
+     */
     @FXML
     private void handleShowAllPatient(ActionEvent e) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllPatientView.fxml"));
@@ -23,6 +27,10 @@ public class MainWindowController {
         AllPatientController controller = loader.getController();
     }
 
+    /**
+     *
+     * @param e
+     */
     @FXML
     private void handleShowAllTreatments(ActionEvent e) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
@@ -33,6 +41,11 @@ public class MainWindowController {
         }
         AllTreatmentController controller = loader.getController();
     }
+
+    /**
+     *
+     * @param e
+     */
     @FXML
     public void handleShowAllCaregiver(ActionEvent e) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllCaregiverView.fxml"));

@@ -8,13 +8,26 @@ public class User extends Person {
     private String username;
     private String password;
 
-
+    /**
+     * constructs a user from the given params.
+     * @param firstName
+     * @param surname
+     * @param username
+     * @param password
+     */
     public User(String firstName, String surname, String username, String password) {
         super(firstName, surname);
         this.username = username;
         this.password = password;
     }
 
+    /**
+     * constructs a user from the given params.
+     * @param firstName
+     * @param surname
+     * @param username
+     * @param password
+     */
     public User(long uid, String firstName, String surname, String username, String password) {
         super(firstName, surname);
         this.uid = uid;

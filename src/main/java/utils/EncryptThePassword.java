@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
-public class EncryptAndDecrypt {
+public class EncryptThePassword {
     public static byte[] hash(char[] password, byte[] salt) {
         final int iterations = 10000;
         final int keylength = 256;

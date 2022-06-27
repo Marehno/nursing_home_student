@@ -16,6 +16,15 @@ public class Treatment {
     private String description;
     private String remarks;
 
+    /**
+     * constructs a user from the given params.
+     * @param pid
+     * @param date
+     * @param begin
+     * @param end
+     * @param description
+     * @param remarks
+     */
     public Treatment(long pid, LocalDate date, LocalTime begin, LocalTime end, String description, String remarks) {
         this.pid = pid;
         this.date = date;
@@ -25,6 +34,16 @@ public class Treatment {
         this.remarks = remarks;
     }
 
+    /**
+     * constructs a user from the given params.
+     * @param pid
+     * @param tid
+     * @param date
+     * @param begin
+     * @param end
+     * @param description
+     * @param remarks
+     */
     public Treatment(long tid, long pid, LocalDate date, LocalTime begin, LocalTime end, String description, String remarks) {
         this.tid = tid;
         this.pid = pid;
