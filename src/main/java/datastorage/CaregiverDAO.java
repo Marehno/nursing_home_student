@@ -88,7 +88,7 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
      */
     @Override
     protected String getUpdateStatementString(Caregiver caregiver) {
-        return String.format("UPDATE caregiver SET firstname = '%s', surname = '%s', WHERE cid = %d", caregiver.getFirstName(), caregiver.getSurname());
+        return String.format("UPDATE caregiver SET firstname = '%s', surname = '%s', WHERE cid = %d", caregiver.getFirstName(), caregiver.getSurname(), caregiver.getCid());
 
     }
 
