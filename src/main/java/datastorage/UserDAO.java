@@ -13,11 +13,21 @@ public class UserDAO extends DAOimp<User>{
         super(connection);
     }
 
+    /**
+     * Insert the values in the User with an SQL-Statement
+     * @param user
+     * @return the values from the class User
+     */
     @Override
     protected String getCreateStatementString(User user) {
         return String.format("Insert into uid, username, password Values(%s, %s, %s)", user.getUid(), user.getUsername(), user.getPassword());
     }
 
+    /**
+     * The method selects all Users
+     * @param userKey
+     * @return all Users from the class User
+     */
     @Override
     protected String getReadByIDStatementString(long userKey) {
         return String.format("Select * from User where uid = %d", userKey);

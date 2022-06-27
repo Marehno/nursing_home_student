@@ -12,5 +12,5 @@ public interface DAO<T> {
 
     void update(T t) throws SQLException;
 
-    void deleteById(long key) throws SQLException;
+    void checkTheLockStatus(long key) throws SQLException;
 }

@@ -55,13 +55,16 @@ public class NewTreatmentController {
         LocalTime end = DateConverter.convertStringToLocalTime(txtEnd.getText());
         String description = txtDescription.getText();
         String remarks = taRemarks.getText();
-        Treatment treatment = new Treatment(patient.getPid(), date,
-                begin, end, description, remarks);
+        Treatment treatment = new Treatment(patient.getPid(), date, begin, end, description, remarks);
         createTreatment(treatment);
         controller.readAllAndShowInTableView();
         stage.close();
     }
 
+    /**
+     *
+     * @param treatment
+     */
     private void createTreatment(Treatment treatment) {
         TreatmentDAO dao = DAOFactory.getDAOFactory().createTreatmentDAO();
         try {

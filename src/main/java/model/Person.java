@@ -4,6 +4,12 @@ public abstract class Person {
     private String firstName;
     private String surname;
 
+    /**
+     * constructs a person from the given params.
+     * @param firstName
+     * @param surname
+     */
+
     public Person(String firstName, String surname) {
         this.firstName = firstName;
         this.surname = surname;

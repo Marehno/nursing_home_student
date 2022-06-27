@@ -37,6 +37,12 @@ public class TreatmentController {
     private Patient patient;
     private Treatment treatment;
 
+    /**
+     *
+     * @param controller
+     * @param stage
+     * @param treatment
+     */
     public void initializeController(AllTreatmentController controller, Stage stage, Treatment treatment) {
         this.stage = stage;
         this.controller= controller;
@@ -49,6 +55,7 @@ public class TreatmentController {
             e.printStackTrace();
         }
     }
+
 
     private void showData(){
         this.lblPatientName.setText(patient.getSurname()+", "+patient.getFirstName());

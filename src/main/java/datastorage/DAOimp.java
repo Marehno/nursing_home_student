@@ -48,7 +48,7 @@ public abstract class DAOimp<T> implements DAO<T>{
     }
 
     @Override
-    public void deleteById(long key) throws SQLException {
+    public void checkTheLockStatus(long key) throws SQLException {
         Statement st = conn.createStatement();
         st.executeUpdate(getDeleteStatementString(key));
     }
