@@ -52,16 +52,15 @@ public class AllCaregiverController {
 
         this.colID.setCellValueFactory(new PropertyValueFactory<Caregiver, Integer>("cid"));
 
-        //CellValuefactory zum Anzeigen der Daten in der TableView
         this.colSurname.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("surname"));
         this.colSurname.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colFirstname.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("firstname"));
+        this.colFirstname.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("firstName"));
         this.colFirstname.setCellFactory(TextFieldTableCell.forTableColumn());
 
         this.colPhonenumber.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("phonenumber"));
         this.colPhonenumber.setCellFactory(TextFieldTableCell.forTableColumn());
-        //Anzeigen der Daten
+
         this.tableView.setItems(this.tableviewContent);
     }
 
@@ -86,20 +85,9 @@ public class AllCaregiverController {
     }
     @FXML
     public void handleOnEditPhonenumber(TableColumn.CellEditEvent<Caregiver, String> event){
-        event.getRowValue().setPhonenumber(Integer.parseInt(event.getNewValue()));
+        event.getRowValue().setPhonenumber(event.getNewValue());
         doUpdate(event);
     }
-
-
-    /**
-     * handles new asset value
-     * @param event event including the value that a user entered into the cell
-     */
-    //@FXML
-    //public void handleOnEditAssets(TableColumn.CellEditEvent<Patient, String> event){
-    //  event.getRowValue().setAssets(event.getNewValue());
-    //doUpdate(event);
-    //}
 
     /**
      * updates a caregiver by calling the update-Method in the {@link CaregiverDAO}
@@ -122,9 +110,7 @@ public class AllCaregiverController {
         List<Caregiver> allCaregiver;
         try {
             allCaregiver = dao.readAll();
-            for (Caregiver c : allCaregiver) {
-                this.tableviewContent.add(c);
-            }
+            this.tableviewContent.addAll(allCaregiver);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -156,10 +142,10 @@ public class AllCaregiverController {
     public void handleAdd() {
         String surname = this.txtSurname.getText();
         String firstname = this.txtFirstname.getText();
-        int phonenumber = Integer.parseInt(this.txtPhonenumber.getText());
+        String phonenumber = this.txtPhonenumber.getText();
 
         try {
-            Caregiver c = new Caregiver(surname, firstname, phonenumber);
+            Caregiver c = new Caregiver(firstname, surname, phonenumber);
             dao.create(c);
         } catch (SQLException e) {
             e.printStackTrace();
