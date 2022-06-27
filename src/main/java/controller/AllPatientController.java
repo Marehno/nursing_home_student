@@ -28,6 +28,12 @@ public class AllPatientController {
     private TableColumn<Patient, String> colFirstName;
     @FXML
     private TableColumn<Patient, String> colSurname;
+    @FXML
+    private TableColumn<Patient, String> colDateOfBirth;
+    @FXML
+    private TableColumn<Patient, String> colCareLevel;
+    @FXML
+    private TableColumn<Patient, String> colRoom;
 
     @FXML
     Button btnDelete;
@@ -62,6 +68,15 @@ public class AllPatientController {
 
         this.colSurname.setCellValueFactory(new PropertyValueFactory<Patient, String>("surname"));
         this.colSurname.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        this.colDateOfBirth.setCellValueFactory(new PropertyValueFactory<Patient, String>("dateOfBirth"));
+        this.colDateOfBirth.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        this.colCareLevel.setCellValueFactory(new PropertyValueFactory<Patient, String>("careLevel"));
+        this.colCareLevel.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        this.colRoom.setCellValueFactory(new PropertyValueFactory<Patient, String>("roomnumber"));
+        this.colRoom.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
@@ -116,17 +131,6 @@ public class AllPatientController {
         event.getRowValue().setRoomnumber(event.getNewValue());
         doUpdate(event);
     }
-
-    /**
-     * handles new asset value
-     * @param event event including the value that a user entered into the cell
-     */
-    //@FXML
-    //public void handleOnEditAssets(TableColumn.CellEditEvent<Patient, String> event){
-      //  event.getRowValue().setAssets(event.getNewValue());
-        //doUpdate(event);
-    //}
-
     /**
      * updates a patient by calling the update-Method in the {@link PatientDAO}
      * @param t row to be updated by the user (includes the patient)
@@ -163,6 +167,7 @@ public class AllPatientController {
     public void handleDeleteRow() {
         TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
         Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+        this.tableView.getItems().remove(selectedItem);
         try {
             tDao.deleteByPid(selectedItem.getPid());
             dao.checkTheLockStatus(selectedItem.getPid());
@@ -170,6 +175,7 @@ public class AllPatientController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        this.handleAdd();
     }
 
     /**

@@ -28,7 +28,7 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
      */
     @Override
     protected String getCreateStatementString(Caregiver caregiver) {
-        return String.format("INSERT INTO caregiver (firstname, surname, phonenumber VALUES ('%s', '%s', '%s')",
+        return String.format("INSERT INTO caregiver (firstname, surname, phonenumber) VALUES ('%s', '%s', '%s')",
                 caregiver.getFirstName(), caregiver.getSurname(), caregiver.getPhonenumber());
     }
 
@@ -50,8 +50,8 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
     @Override
     protected Caregiver getInstanceFromResultSet(ResultSet result) throws SQLException {
         Caregiver p;
-        p = new Caregiver(result.getString(1), result.getString(2),
-                result.getString(3));
+        p = new Caregiver(result.getString(2), result.getString(3),
+                result.getString(4),result.getLong(1));
         return p;
     }
 
@@ -71,11 +71,11 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
      */
     @Override
     protected ArrayList<Caregiver> getListFromResultSet(ResultSet result) throws SQLException {
-        ArrayList<Caregiver> list = new ArrayList<Caregiver>();
+        ArrayList<Caregiver> list = new ArrayList<>();
         Caregiver p;
         while (result.next()) {
-            p = new Caregiver(result.getString(1), result.getString(2),
-                    result.getString(3));
+            p = new Caregiver(result.getString(2),result.getString(3),
+                    result.getString(4), result.getLong(1));
             list.add(p);
         }
         return list;
@@ -88,7 +88,7 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
      */
     @Override
     protected String getUpdateStatementString(Caregiver caregiver) {
-        return String.format("UPDATE caregiver SET firstname = '%s', surname = '%s', WHERE cid = %d", caregiver.getFirstName(), caregiver.getSurname());
+        return String.format("UPDATE caregiver SET firstname = '%s', surname = '%s', WHERE cid = %d", caregiver.getFirstName(), caregiver.getSurname(), caregiver.getCid());
 
     }
 
@@ -102,4 +102,3 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
         return String.format("Delete FROM caregiver WHERE cid=%d", key);
     }
 }
-
