@@ -15,16 +15,17 @@ import java.io.IOException;
 public class Main extends Application {
 
     private Stage primaryStage;
+    Stage stage;
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         mainWindow();
     }
-
     public void mainWindow() {
+
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/MainWindowView.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/Login.fxml"));
             BorderPane pane = loader.load();
 
             Scene scene = new Scene(pane);
@@ -45,6 +46,12 @@ public class Main extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    public void changeScene(String fxmlScreen) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlScreen));
+        BorderPane pane = fxmlLoader.load();
+        this.primaryStage.getScene().setRoot(pane);
+        pane.setCenter(fxmlLoader.load());
     }
 
     public static void main(String[] args) {

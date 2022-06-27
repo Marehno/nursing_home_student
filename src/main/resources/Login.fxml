@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="User"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <center>
+        <AnchorPane prefHeight="688.0" prefWidth="509.0" BorderPane.alignment="CENTER">
+            <children>
+                <GridPane layoutX="150.0" layoutY="270.0" prefHeight="132.0" prefWidth="272.0" vgap="14.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.407470703125" minWidth="10.0" prefWidth="208.20458984375" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="67.52847290039062" minHeight="10.0" prefHeight="67.52847290039062" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="67.52847290039062" minHeight="10.0" prefHeight="67.52847290039062" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="64.47152709960938" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="64.47152709960938" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="txtUsername" onKeyReleased="#txtKey" promptText="Username" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="txtPassword" layoutX="177.0" layoutY="30.0" onKeyReleased="#txtKey" promptText="Kennwort" GridPane.rowIndex="2" />
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: darkblue;" text="Anmelden" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Button>
+                        <Label text="Anmelden" GridPane.halignment="LEFT">
+                            <font>
+                                <Font name="Arial Black" size="22.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="wrongLogin" textFill="RED" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </GridPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
